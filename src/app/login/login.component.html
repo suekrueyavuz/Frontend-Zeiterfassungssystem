@@ -1,0 +1,7 @@
+Username: <br>
+<input type="text" #username>
+<br>
+Password: <br>
+<input type="password" #password>
+<br>
+<button type="button" (click)="sendLoginRequest(username.value, password.value)">Login</button>

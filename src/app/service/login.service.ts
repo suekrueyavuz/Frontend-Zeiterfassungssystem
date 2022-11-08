@@ -9,8 +9,8 @@ import { User } from '../model/user';
 })
 export class LoginService {
   url: string = 'http://localhost:8080/login';
-  user?: User;
 
+  private user = new BehaviorSubject<any>({});
   private isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {
@@ -27,16 +27,15 @@ export class LoginService {
     this.http.post<any>(this.url, JSON.stringify(this.createLoginBody(username, password)))
       .pipe(retry(1), catchError(this.handleError)).subscribe(data => {
         localStorage.setItem('token', data.token);
-        this.user = new User(data.username, data.role);
+        const user = new User(data.username, data.role);
+        this.user.next(user);
         this.isLoggedIn.next(true);
         this.router.navigate(['/home']);
       });
   }
 
   logout() {
-    localStorage.removeItem('username');
     localStorage.removeItem('token');
-    localStorage.removeItem('role');
     this.isLoggedIn.next(false);
   }
 
@@ -44,8 +43,8 @@ export class LoginService {
     return this.isLoggedIn.asObservable();
   }
 
-  getUser() {
-    return this.user;
+  getUser() : Observable<User> {
+    return this.user.asObservable();
   }
 
   handleError(error: any) {

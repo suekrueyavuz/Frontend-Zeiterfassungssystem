@@ -9,13 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component';
+import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyZeiterfassungComponent,
+    MitarbeiterComponent
   ],
   imports: [
     BrowserModule,

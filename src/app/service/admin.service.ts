@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { User } from '../model/user';
@@ -8,20 +8,34 @@ import { User } from '../model/user';
 })
 export class AdminService {
   BASE_URL: string = 'http://localhost:8080/admin/';
+  headers: any;
+  options: any;
 
   constructor(private http: HttpClient) { }
 
-  createNewMitarbeiter(user: User) {
+  createNewMitarbeiter(username:string, password:string, forename:string, surname:string, role:string) {
     const body = {
-      forename: user.forename,
-      surname: user.surname,
-      username: user.username,
-      password: user.password,
-      role: user.role
+      forename: forename,
+      surname: surname,
+      username: username,
+      password: password,
+      role: role
     };
 
-    this.http.post<any>(this.BASE_URL + 'mitarbeiter', JSON.stringify(body))
-    .pipe(retry(1), catchError(this.handleError)).subscribe(data => { });
+    this.http.post<any>(this.BASE_URL + 'mitarbeiter', JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError)).subscribe();
+  }
+
+  getAllMitarbeiter() {
+    return this.http.get<any>(this.BASE_URL + 'mitarbeiter', this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
+  getHeaders() {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    return { headers: this.headers };
   }
 
   handleError(error: any) {

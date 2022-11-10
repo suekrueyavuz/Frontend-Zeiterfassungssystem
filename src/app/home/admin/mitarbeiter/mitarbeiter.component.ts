@@ -9,11 +9,22 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class MitarbeiterComponent implements OnInit {
   allMitarbeiter: User[] = [];
+  selectedMitarbeiter?: User;
+
+  cols: any[] = [];
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.getAllMitarbeiter();
+
+    this.cols = [
+      { field: 'id', header: 'ID' },
+      { field: 'username', header: 'Username' },
+      { field: 'forename', header: 'Vorname' },
+      { field: 'surname', header: 'Nachname' },
+      { field: 'role', header: 'Rolle' }
+    ];
   }
 
   getAllMitarbeiter() {

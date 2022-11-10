@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {ButtonModule} from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PanelModule} from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {TableModule} from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component';
 import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.component';
 import { FirmaComponent } from './home/admin/firma/firma.component';
+import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +26,20 @@ import { FirmaComponent } from './home/admin/firma/firma.component';
     HeaderComponent,
     MyZeiterfassungComponent,
     MitarbeiterComponent,
-    FirmaComponent
+    FirmaComponent,
+    ChangeMitarbeiterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    PanelModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    TabMenuModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,20 @@
-<ul class="list-group">
-    <li 
-        *ngFor="let user of allMitarbeiter"
-        class="list-group-item">
-        {{ user.username }}
-    </li>
-  </ul>
+<div class="card">
+    <p-table [columns]="cols" [value]="allMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user let-rowData let-columns="columns">
+            <tr [pSelectableRow]="user">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<app-change-mitarbeiter *ngIf="selectedMitarbeiter" [selectedMitarbeiter]="selectedMitarbeiter"></app-change-mitarbeiter>

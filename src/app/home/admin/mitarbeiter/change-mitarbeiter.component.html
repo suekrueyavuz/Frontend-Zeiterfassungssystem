@@ -1,39 +1,25 @@
-<p-panel header="Profile">
+<p-panel header="Profil">
     <div class="row mb-3">
-        <div class="col-sm-3"><strong>Firstname</strong></div>
+        <div class="col-sm-3"><strong>Username</strong></div>
         <div class="col-sm-7">{{ selectedMitarbeiter?.username }}</div>
         <div class="col-sm-2 text-right">
-            <button pButton type="button" icon="fa-pencil" class="ui-button-secondary"></button>
+            <button pButton type="button" icon="pi pi-pencil" style="font-size: 0.1rem" (click)="clickedEdit = !clickedEdit"></button>
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-sm-3"><strong>Lastname</strong></div>
+        <div class="col-sm-3"><strong>Vorname</strong></div>
         <div class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
     </div>
-    <hr/>
-
     <div class="row mb-3">
-        <div class="col-sm-3"><strong>Address</strong></div>
-        <div class="col-sm-7">{{ selectedMitarbeiter?.forename }}</div>
-        <div class="col-sm-2 text-right">
-            <button pButton type="button" icon="fa-pencil" class="ui-button-secondary"></button>
-        </div>
+        <div class="col-sm-3"><strong>Nachname</strong></div>
+        <div class="col-sm-7">{{ selectedMitarbeiter?.surname }}</div>
     </div>
     <div class="row mb-3">
-        <div class="col-sm-3"><strong>Postal code</strong></div>
-        <div class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
+        <div class="col-sm-3"><strong>Rolle</strong></div>
+        <div class="col-sm-9">{{ selectedMitarbeiter?.role }}</div>
     </div>
-    <hr/>
-
-    <div class="row mb-3">
-        <div class="col-sm-3"><strong>Home number</strong></div>
-        <div class="col-sm-7">{{ selectedMitarbeiter?.forename }}</div>
-        <div class="col-sm-2 text-right">
-            <button pButton type="button" icon="fa-pencil" class="ui-button-secondary"></button>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-sm-3"><strong>Mobile number</strong></div>
-        <div class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
+    <div *ngIf="clickedEdit">
+        <button pButton type="button" icon="pi pi-check" class=" p-button-success p-button-sm" label="Ändern"></button>
+        <button pButton type="button" icon="pi pi-times" class="p-button-secondary p-button-sm" label="Abbrechen" (click)="clickedEdit = false"></button>
     </div>
 </p-panel>

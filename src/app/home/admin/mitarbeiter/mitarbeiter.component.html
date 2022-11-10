@@ -17,4 +17,6 @@
     </p-table>
 </div>
 
-<app-change-mitarbeiter *ngIf="selectedMitarbeiter" [selectedMitarbeiter]="selectedMitarbeiter"></app-change-mitarbeiter>
+<div class="container" *ngIf="selectedMitarbeiter">
+    <app-change-mitarbeiter [selectedMitarbeiter]="selectedMitarbeiter"></app-change-mitarbeiter>
+</div>

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component';
 import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.component';
+import { FirmaComponent } from './home/admin/firma/firma.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.compo
     HomeComponent,
     HeaderComponent,
     MyZeiterfassungComponent,
-    MitarbeiterComponent
+    MitarbeiterComponent,
+    FirmaComponent
   ],
   imports: [
     BrowserModule,

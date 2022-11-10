@@ -6,5 +6,6 @@
     <li><a routerLink="/home">Home</a></li>
     <li *ngIf="userHasRole('ROLE_MITARBEITER')"><a routerLink="/zeiterfassung">Ausleihungen</a></li>
     <li *ngIf="userHasRole('ROLE_ADMIN')"><a routerLink="/admin/mitarbeiter">Mitarbeiter</a></li>
+    <li *ngIf="userHasRole('ROLE_ADMIN')"><a routerLink="/admin/firma">Firma</a></li>
     <li><a routerLink="/" (click)="logout()">Logout</a></li>
 </ul>

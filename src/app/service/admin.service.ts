@@ -31,6 +31,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  getAllFirma() {
+    return this.http.get<any>(this.BASE_URL + 'firma', this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

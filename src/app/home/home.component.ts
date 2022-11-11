@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loginService.getUser().subscribe((value => {
+    this.loginService.getUser().subscribe((value => {      
       this.user = value;
     }))
   }

@@ -14,15 +14,19 @@ export class HeaderComponent implements OnInit {
 
   items: MenuItem[] = [];
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {
+
+   }
 
   ngOnInit(): void {
     this.loginService.getIsLoggedIn().subscribe((value => {
       this.isLoggedIn = value;
+      console.log(this.isLoggedIn);
+      
       this.updateItems();
     }))
     this.loginService.getUser().subscribe((value => {
-      this.user = value;      
+      this.user = value;
       this.updateItems();
     }));
   }

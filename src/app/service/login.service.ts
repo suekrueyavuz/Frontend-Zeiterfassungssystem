@@ -10,10 +10,16 @@ import { User } from '../model/user';
 export class LoginService {
   url: string = 'http://localhost:8080/login';
 
-  private user = new BehaviorSubject<any>({});
-  private isLoggedIn = new BehaviorSubject<boolean>(false);
+  private user: BehaviorSubject<User>;
+  private isLoggedIn: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient, private router: Router) {
+    this.user = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user') || '{}'));
+    if(localStorage.getItem('user')) {
+      this.isLoggedIn = new BehaviorSubject<boolean>(true);
+    } else {
+      this.isLoggedIn = new BehaviorSubject<boolean>(false);
+    }
   }
 
   createLoginBody(username: string, password: string) {
@@ -26,8 +32,9 @@ export class LoginService {
   login(username: string, password: string) {
     this.http.post<any>(this.url, JSON.stringify(this.createLoginBody(username, password)))
       .pipe(retry(1), catchError(this.handleError)).subscribe(data => {
-        localStorage.setItem('token', data.token);
         const user = new User(data.username, data.role);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', data.token);
         this.user.next(user);
         this.isLoggedIn.next(true);
         this.router.navigate(['/home']);
@@ -36,7 +43,9 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.isLoggedIn.next(false);
+    this.user.next(null!);
   }
 
   getIsLoggedIn(): Observable<boolean> {

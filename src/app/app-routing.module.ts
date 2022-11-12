@@ -5,7 +5,6 @@ import { MitarbeiterComponent } from "./home/admin/mitarbeiter/mitarbeiter.compo
 import { HomeComponent } from "./home/home.component";
 import { MyZeiterfassungComponent } from "./home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component";
 import { LoginComponent } from "./login/login.component";
-import { RoleGuardService } from "./service/role-guard.service";
 
 const routes: Routes = [
     {
@@ -14,32 +13,19 @@ const routes: Routes = [
     },
     {
       path: 'home', 
-      component: HomeComponent,
-      canActivate: [RoleGuardService]
+      component: HomeComponent
     },
     {
       path: 'zeiterfassung', 
-      component: MyZeiterfassungComponent,
-      canActivate: [RoleGuardService],
-      data: {
-        expectedRole: 'ROLE_MITARBEITER'
-      }
+      component: MyZeiterfassungComponent
     },
     {
       path: 'admin/mitarbeiter', 
-      component: MitarbeiterComponent,
-      canActivate: [RoleGuardService], 
-      data: { 
-        expectedRole: 'ROLE_ADMIN'
-      }
+      component: MitarbeiterComponent
     },
     {
       path: 'admin/firma', 
-      component: FirmaComponent,
-      canActivate: [RoleGuardService], 
-      data: { 
-        expectedRole: 'ROLE_FIRMA'
-      }
+      component: FirmaComponent
     }
   ];
 

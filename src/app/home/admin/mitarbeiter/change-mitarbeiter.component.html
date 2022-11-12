@@ -1,22 +1,42 @@
 <p-panel header="Profil">
     <div class="row mb-3">
         <div class="col-sm-3"><strong>Username</strong></div>
-        <div class="col-sm-7">{{ selectedMitarbeiter?.username }}</div>
+        <div *ngIf="!clickedEdit; else bearbeiten" class="col-sm-7">{{ selectedMitarbeiter?.username }}</div>
+        <ng-template #bearbeiten>
+            <div class="col-sm-7">
+                <input type="text" [value]="selectedMitarbeiter?.username">
+            </div>
+        </ng-template>
         <div class="col-sm-2 text-right">
             <button pButton type="button" icon="pi pi-pencil" style="font-size: 0.1rem" (click)="clickedEdit = !clickedEdit"></button>
         </div>
     </div>
     <div class="row mb-3">
         <div class="col-sm-3"><strong>Vorname</strong></div>
-        <div class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
+        <div *ngIf="!clickedEdit; else bearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
+        <ng-template #bearbeiten>
+            <div class="col-sm-9">
+                <input type="text" [value]="selectedMitarbeiter?.forename">
+            </div>
+        </ng-template>
     </div>
     <div class="row mb-3">
         <div class="col-sm-3"><strong>Nachname</strong></div>
-        <div class="col-sm-7">{{ selectedMitarbeiter?.surname }}</div>
+        <div *ngIf="!clickedEdit; else bearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.surname }}</div>
+        <ng-template #bearbeiten>
+            <div class="col-sm-9">
+                <input type="text" [value]="selectedMitarbeiter?.surname">
+            </div>
+        </ng-template>
     </div>
     <div class="row mb-3">
         <div class="col-sm-3"><strong>Rolle</strong></div>
-        <div class="col-sm-9">{{ selectedMitarbeiter?.role }}</div>
+        <div *ngIf="!clickedEdit; else bearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.role }}</div>
+        <ng-template #bearbeiten>
+            <div class="col-sm-9">
+                <input type="text" [value]="selectedMitarbeiter?.role">
+            </div>
+        </ng-template>
     </div>
     <div *ngIf="clickedEdit">
         <button pButton type="button" icon="pi pi-check" class=" p-button-success p-button-sm" label="Ändern"></button>

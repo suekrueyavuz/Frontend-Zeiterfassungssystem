@@ -16,13 +16,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(private loginService: LoginService) {
 
-   }
+  }
 
   ngOnInit(): void {
     this.loginService.getIsLoggedIn().subscribe((value => {
-      this.isLoggedIn = value;
-      console.log(this.isLoggedIn);
-      
+      this.isLoggedIn = value;      
       this.updateItems();
     }))
     this.loginService.getUser().subscribe((value => {

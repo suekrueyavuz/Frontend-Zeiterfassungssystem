@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { AdminService } from 'src/app/service/admin.service';
@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class ChangeMitarbeiterComponent implements OnInit {
   @Input() selectedMitarbeiter?: User;
+  @Output() selectedMitarbeiterChange = new EventEmitter<any>();
   changedMitarbeiter?: User;
   clickedEdit:boolean = false;
 
@@ -24,11 +25,15 @@ export class ChangeMitarbeiterComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   changeMitarbeiter() {
+    console.log(this.selectedMitarbeiter?.forename);
     
+  }
+
+  closeSelectedMitarbeiter() {
+    this.selectedMitarbeiterChange.emit(undefined);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { User } from '../model/user';
 import { LoginService } from '../service/login.service';
@@ -12,10 +13,14 @@ export class HeaderComponent implements OnInit {
   isLoggedIn:boolean = false;
   user?:User;
 
-  items: MenuItem[] = [];
+  headers: MenuItem[] = [];
+  mitarbeiterHeaders: MenuItem[] = [];
 
-  constructor(private loginService: LoginService) {
-
+  constructor(private loginService: LoginService, public router: Router) {
+    this.mitarbeiterHeaders = [
+      {label: 'Hinzufügen'},
+      {label: 'Ausleihen'}
+    ];
   }
 
   ngOnInit(): void {
@@ -30,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   updateItems() {
-    this.items = [
+    this.headers = [
       {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/home'], visible: this.isLoggedIn},
       {label: 'Mitarbeiter', routerLink: '/admin/mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
       {label: 'Firma', routerLink: '/admin/firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},

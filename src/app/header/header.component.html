@@ -1,1 +1,2 @@
-<p-tabMenu [model]="items"></p-tabMenu>
+<p-tabMenu [model]="headers"></p-tabMenu>
+<p-tabMenu *ngIf="router.url === '/admin/mitarbeiter'" [model]="mitarbeiterHeaders"></p-tabMenu>

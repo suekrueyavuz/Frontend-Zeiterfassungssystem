@@ -35,7 +35,7 @@
         <div *ngIf="!clickedEdit; else rolleBearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.role }}</div>
         <ng-template #rolleBearbeiten>
             <div class="col-sm-9" *ngIf="selectedMitarbeiter">
-                <input type="text" [(ngModel)]="selectedMitarbeiter.role">
+                <p-dropdown [options]="roles" [(ngModel)]="selectedMitarbeiter.role"></p-dropdown>
             </div>
         </ng-template>
     </div>

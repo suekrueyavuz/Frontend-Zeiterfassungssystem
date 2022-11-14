@@ -22,8 +22,8 @@ export class AdminService {
       role: role
     };
 
-    this.http.post<any>(this.BASE_URL + 'mitarbeiter', JSON.stringify(body), this.getHeaders())
-    .pipe(retry(1), catchError(this.handleError)).subscribe();
+    return this.http.post<any>(this.BASE_URL + 'mitarbeiter', JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
   }
 
   getAllMitarbeiter() {

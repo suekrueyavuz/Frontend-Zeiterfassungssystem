@@ -22,6 +22,7 @@ import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my
 import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.component';
 import { FirmaComponent } from './home/admin/firma/firma.component';
 import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mitarbeiter.component';
+import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mita
     MyZeiterfassungComponent,
     MitarbeiterComponent,
     FirmaComponent,
-    ChangeMitarbeiterComponent
+    ChangeMitarbeiterComponent,
+    NewMitarbeiterComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {ToolbarModule} from 'primeng/toolbar';
 import {MenuModule} from 'primeng/menu';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {MenubarModule} from 'primeng/menubar';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -47,7 +48,8 @@ import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mita
     DropdownModule,
     ToolbarModule,
     MenuModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,14 +14,8 @@ export class HeaderComponent implements OnInit {
   user?:User;
 
   headers: MenuItem[] = [];
-  mitarbeiterHeaders: MenuItem[] = [];
 
-  constructor(private loginService: LoginService, public router: Router) {
-    this.mitarbeiterHeaders = [
-      {label: 'Hinzufügen'},
-      {label: 'Ausleihen'}
-    ];
-  }
+  constructor(private loginService: LoginService, public router: Router) {}
 
   ngOnInit(): void {
     this.loginService.getIsLoggedIn().subscribe((value => {
@@ -37,10 +31,14 @@ export class HeaderComponent implements OnInit {
   updateItems() {
     this.headers = [
       {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/home'], visible: this.isLoggedIn},
-      {label: 'Mitarbeiter', routerLink: '/admin/mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
+      {label: 'Mitarbeiter', routerLink: '/admin/mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn,
+        items: [
+          {label: 'Neu', icon: 'pi pi-fw pi-plus'},
+          {label: 'Ausleihen'}    
+      ]},
       {label: 'Firma', routerLink: '/admin/firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
-      {label: 'Logout', command: () => this.logout(), visible: this.isLoggedIn}
+      {label: 'Logout', command: () => this.logout(), visible: this.isLoggedIn}    
     ];
   }
 

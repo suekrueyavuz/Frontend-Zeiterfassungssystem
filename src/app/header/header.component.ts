@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
       {label: 'Mitarbeiter', routerLink: '/admin/mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
       {label: 'Firma', routerLink: '/admin/firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
-      {label: 'Logout', command: () => this.logout(), routerLink: '/', visible: this.isLoggedIn}
+      {label: 'Logout', command: () => this.logout(), visible: this.isLoggedIn}
     ];
   }
 

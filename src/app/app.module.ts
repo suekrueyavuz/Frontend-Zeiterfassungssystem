@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
+import {ToolbarModule} from 'primeng/toolbar';
+import {MenuModule} from 'primeng/menu';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -41,7 +43,9 @@ import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mita
     BrowserAnimationsModule,
     TabMenuModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    ToolbarModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

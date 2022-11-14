@@ -39,6 +39,7 @@ export class LoginService {
     localStorage.removeItem('user');
     this.isLoggedIn.next(false);
     this.user.next(null!);
+    this.router.navigate(['/']);
   }
 
   setIsLoggedIn(isLoggedIn: boolean) {

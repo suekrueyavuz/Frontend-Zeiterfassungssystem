@@ -36,6 +36,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  deleteMitarbeiter(mitarbeiterId: string) {
+    return this.http.delete(this.BASE_URL + 'mitarbeiter/' + mitarbeiterId, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

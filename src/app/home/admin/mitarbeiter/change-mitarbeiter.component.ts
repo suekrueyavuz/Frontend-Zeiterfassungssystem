@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { User } from 'src/app/model/user';
 import { AdminService } from 'src/app/service/admin.service';
@@ -21,7 +22,7 @@ export class ChangeMitarbeiterComponent implements OnInit {
 
   public form:FormGroup;
 
-  constructor(fb:FormBuilder, private adminService: AdminService) {
+  constructor(fb:FormBuilder, private adminService: AdminService, private router: Router) {
     this.form = fb.group({
       username:[null , Validators.required],
       forename:[null, Validators.required],
@@ -39,7 +40,7 @@ export class ChangeMitarbeiterComponent implements OnInit {
     this.items = [{
       items: [
           {label: 'Bearbeiten', icon: 'pi pi-fw pi-pencil', command: () => this.clickedEdit = !this.clickedEdit},
-          {label: 'Löschen', icon: 'pi pi-fw pi-times'}
+          {label: 'Löschen', icon: 'pi pi-fw pi-times', command: () => this.deleteMitarbeiter()}
       ]
     }];
   }
@@ -50,7 +51,14 @@ export class ChangeMitarbeiterComponent implements OnInit {
   }
 
   closeSelectedMitarbeiter() {
+    window.location.reload();
     this.selectedMitarbeiterChange.emit(undefined);
+  }
+
+  deleteMitarbeiter() {
+    this.adminService.deleteMitarbeiter(this.selectedMitarbeiter?.id || null!).subscribe((value) => {
+      this.closeSelectedMitarbeiter();
+    })
   }
 
 }

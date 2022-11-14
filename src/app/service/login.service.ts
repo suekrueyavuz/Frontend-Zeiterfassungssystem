@@ -30,15 +30,8 @@ export class LoginService {
   }
 
   login(username: string, password: string) {
-    this.http.post<any>(this.url, JSON.stringify(this.createLoginBody(username, password)))
-      .pipe(retry(1), catchError(this.handleError)).subscribe(data => {
-        const user = new User(data.username, data.role);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', data.token);
-        this.user.next(user);
-        this.isLoggedIn.next(true);
-        this.router.navigate(['/home']);
-      });
+    return this.http.post<any>(this.url, JSON.stringify(this.createLoginBody(username, password)))
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   logout() {
@@ -48,8 +41,16 @@ export class LoginService {
     this.user.next(null!);
   }
 
+  setIsLoggedIn(isLoggedIn: boolean) {
+    this.isLoggedIn.next(isLoggedIn);
+  }
+
   getIsLoggedIn(): Observable<boolean> {
     return this.isLoggedIn.asObservable();
+  }
+
+  setUser(user: User) {
+    this.user.next(user);
   }
 
   getUser() : Observable<User> {

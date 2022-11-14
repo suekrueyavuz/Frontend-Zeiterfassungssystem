@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +26,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {  }
 
-  sendLoginRequest() {
-    this.loginService.login(this.form.value.username, this.form.value.password);
+  login() {
+    this.loginService.login(this.form.value.username, this.form.value.password).subscribe(data => {
+      const user = new User(data.username, data.role);
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', data.token);
+      this.loginService.setUser(user);
+      this.loginService.setIsLoggedIn(true);
+      this.router.navigate(['/home']);
+    });;
   }
 
 }

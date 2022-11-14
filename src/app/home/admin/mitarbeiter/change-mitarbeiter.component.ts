@@ -12,6 +12,8 @@ export class ChangeMitarbeiterComponent implements OnInit {
   @Input() selectedMitarbeiter?: User;
   @Output() selectedMitarbeiterChange = new EventEmitter<any>();
   changedMitarbeiter?: User;
+
+  roles:any = [];
   clickedEdit:boolean = false;
 
   public form:FormGroup;
@@ -25,7 +27,13 @@ export class ChangeMitarbeiterComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.roles = [
+      'ROLE_ADMIN',
+      'ROLE_MITARBEITER',
+      'ROLE_SCHICHTLEITER'
+    ]
+  }
 
   changeMitarbeiter() {
     console.log(this.selectedMitarbeiter?.forename);

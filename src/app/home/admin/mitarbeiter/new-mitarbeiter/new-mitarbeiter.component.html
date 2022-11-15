@@ -1,78 +1,79 @@
-<form (ngSubmit)="createNewMitarbeiter()" [formGroup]="form">
-    <p-panel header="Neuer Mitarbeiter">
-        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Username:
+<div class="container">
+    <form (ngSubmit)="createNewMitarbeiter()" [formGroup]="form">
+        <p-panel header="Neuer Mitarbeiter">
+            <div style="margin: 1rem;">
+                <div class="row">
+                    <div class="col">
+                        Username:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="text" formControlName="username" class="form-control" name="username">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['username'].valid || !form.controls['username'].dirty" class="alert alert-danger">
+                            Username is required
+                        </div>
+                    </div>
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="username" class="form-control" name="username">
+                <div class="row mt-3">
+                    <div class="col">
+                        Password:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="password" formControlName="password" class="form-control" name="password">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['password'].valid || !form.controls['password'].dirty" class="alert alert-danger">
+                            Password is required
+                        </div>
+                    </div>
                 </div>
-                <div class="ui-grid-col-4">
-                    <div [hidden]="form.controls['username'].valid || !form.controls['username'].dirty" class="alert alert-danger">
-                        Username is required
+                <div class="row mt-3">
+                    <div class="col">
+                        Vorname:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="forename" formControlName="forename" class="form-control" name="forename">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['forename'].valid || !form.controls['forename'].dirty" class="alert alert-danger">
+                            Vorname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Nachname:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="surname" formControlName="surname" class="form-control" name="surname">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['surname'].valid || !form.controls['surname'].dirty" class="alert alert-danger">
+                            Nachname is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Rolle:
+                    </div>
+                    <div class="col">
+                        <p-dropdown [options]="roles" placeholder="Wähle die Rolle" [editable]="true" type="role" formControlName="role" name="role"></p-dropdown>
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['role'].valid || !form.controls['role'].dirty" class="alert alert-danger">
+                            Rolle is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" style="margin-top: 1rem;">
+                    <div class="col-10"></div>
+                    <div class="col-2">
+                        <button pButton type="submit" label="Erstellen" [disabled]="!form.valid" class="p-button-sm"></button>
                     </div>
                 </div>
             </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Password:
-                </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="password" formControlName="password" class="form-control" name="password">
-                </div>
-                <div class="ui-grid-col-4">
-                    <div [hidden]="form.controls['password'].valid || !form.controls['password'].dirty" class="alert alert-danger">
-                        Password is required
-                    </div>
-                </div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Vorname:
-                </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="forename" formControlName="forename" class="form-control" name="forename">
-                </div>
-                <div class="ui-grid-col-4">
-                    <div [hidden]="form.controls['forename'].valid || !form.controls['forename'].dirty" class="alert alert-danger">
-                        Vorname is required
-                    </div>
-                </div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Nachname:
-                </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="surname" formControlName="surname" class="form-control" name="surname">
-                </div>
-                <div class="ui-grid-col-4">
-                    <div [hidden]="form.controls['surname'].valid || !form.controls['surname'].dirty" class="alert alert-danger">
-                        Nachname is required
-                    </div>
-                </div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Rolle:
-                </div>
-                <div class="ui-grid-col-6">
-                    <p-dropdown [options]="roles" placeholder="Wähle die Rolle" [editable]="true" type="role" formControlName="role" name="role"></p-dropdown>
-                </div>
-                <div class="ui-grid-col-4">
-                    <div [hidden]="form.controls['role'].valid || !form.controls['role'].dirty" class="alert alert-danger">
-                        Rolle is required
-                    </div>
-                </div>
-            </div>
-            <div class="ui-grid-row" style="margin-top: 1rem;">
-                <div class="ui-grid-col-2"></div>
-                <div class="ui-grid-col-6">
-                    <button pButton type="submit" label="Erstellen" [disabled]="!form.valid" class="p-button-sm"></button>
-                </div>
-                <div class="ui-grid-col-4"></div>
-            </div>
-        </div>
-    </p-panel>
-</form>
+        </p-panel>
+    </form>
+</div>

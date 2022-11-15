@@ -9,8 +9,8 @@ import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import {ToolbarModule} from 'primeng/toolbar';
 import {MenuModule} from 'primeng/menu';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MenubarModule} from 'primeng/menubar';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +23,8 @@ import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.compo
 import { FirmaComponent } from './home/admin/firma/firma.component';
 import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mitarbeiter.component';
 import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component';
+import { MitarbeiterAusleihenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component';
+import { VerfuegbareMitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-mitarbeiter/verfuegbare-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeite
     MitarbeiterComponent,
     FirmaComponent,
     ChangeMitarbeiterComponent,
-    NewMitarbeiterComponent
+    NewMitarbeiterComponent,
+    MitarbeiterAusleihenComponent,
+    VerfuegbareMitarbeiterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +54,10 @@ import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeite
     DropdownModule,
     ToolbarModule,
     MenuModule,
-    ConfirmDialogModule,
-    MenubarModule
+    MenubarModule,
+    DynamicDialogModule
   ],
-  providers: [],
+  providers: [DynamicDialogModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

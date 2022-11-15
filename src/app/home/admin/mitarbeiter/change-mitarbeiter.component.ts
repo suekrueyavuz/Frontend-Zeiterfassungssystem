@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -43,6 +43,10 @@ export class ChangeMitarbeiterComponent implements OnInit {
           {label: 'Löschen', icon: 'pi pi-fw pi-times', command: () => this.deleteMitarbeiter()}
       ]
     }];
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.clickedEdit = false;
   }
 
   changeMitarbeiter() {

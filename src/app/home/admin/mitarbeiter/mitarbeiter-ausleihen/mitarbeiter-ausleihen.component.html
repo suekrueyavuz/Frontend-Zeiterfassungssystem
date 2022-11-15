@@ -1,0 +1,28 @@
+<div class="mitarbeiterAusleihen">
+    <div class="container">
+        <form (ngSubmit)="mitarbeiterAusleihen()" [formGroup]="form">
+            <p-panel header="Mitarbeiter Ausleihen">
+                <div style="margin: 1rem;">
+                    <div class="row">
+                        <div class="col" *ngIf="!selectedMitarbeiter else showMitarbeiter">
+                            <button type="button" (click)="showVerfuegbareMitarbeiter()" pButton label="Mitarbeiter auswählen"></button>
+                        </div>
+                        <ng-template #showMitarbeiter>
+                            <div class="col">
+                                Mitarbeiter: {{selectedMitarbeiter?.forename}} {{selectedMitarbeiter?.surname}}
+                                <button pButton pRipple type="button" (click)="selectedMitarbeiter = undefined" icon="pi pi-times" class="p-button-rounded p-button-danger" styleClass="p-button-sm"></button>
+                            </div>
+                        </ng-template>
+                        
+                        <div class="col">
+                            <button type="button" (click)="showVerfuegbareMitarbeiter()" pButton label="Firma auswählen"></button>
+                        </div>
+                        <div class="col">
+                            <button type="button" (click)="showVerfuegbareMitarbeiter()" pButton label="Zeitraum auswählen"></button>
+                        </div>
+                    </div>                 
+                </div>
+            </p-panel>
+        </form>
+    </div>
+</div>

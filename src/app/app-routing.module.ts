@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
 import { FirmaComponent } from "./home/admin/firma/firma.component";
+import { MitarbeiterAusleihenComponent } from "./home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component";
 import { MitarbeiterComponent } from "./home/admin/mitarbeiter/mitarbeiter.component";
 import { NewMitarbeiterComponent } from "./home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component";
 import { HomeComponent } from "./home/home.component";
@@ -45,6 +46,14 @@ const routes: Routes = [
     {
       path: 'admin/mitarbeiter/neu',
       component: NewMitarbeiterComponent,
+      canActivate: [AuthGuard],
+      data: {
+        role: 'ROLE_ADMIN'
+      }
+    },
+    {
+      path: 'admin/mitarbeiter/ausleihen',
+      component: MitarbeiterAusleihenComponent,
       canActivate: [AuthGuard],
       data: {
         role: 'ROLE_ADMIN'

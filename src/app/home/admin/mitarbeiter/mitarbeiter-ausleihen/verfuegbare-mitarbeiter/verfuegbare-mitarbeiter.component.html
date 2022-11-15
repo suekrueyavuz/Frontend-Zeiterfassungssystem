@@ -1,6 +1,6 @@
-<div class="firmaList">
+<div class="verfuegbareMitarbeiter">
     <div class="card">
-        <p-table [columns]="cols" [value]="allFirma" selectionMode="single" [(selection)]="selectedFirma" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
+        <p-table [columns]="cols" [value]="verfuegbareMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -17,4 +17,8 @@
             </ng-template>
         </p-table>
     </div>
+</div>
+
+<div class="button">
+    <button pButton type="button" label="Auswählen" class="p-button-sm" (click)="selectMitarbeiter()"></button>
 </div>

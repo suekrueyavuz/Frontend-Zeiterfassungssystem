@@ -10,15 +10,22 @@
                         <ng-template #showMitarbeiter>
                             <div class="col">
                                 Mitarbeiter: {{selectedMitarbeiter?.forename}} {{selectedMitarbeiter?.surname}}
-                                <button pButton pRipple type="button" (click)="selectedMitarbeiter = undefined" icon="pi pi-times" class="p-button-rounded p-button-danger" styleClass="p-button-sm"></button>
+                                <button pButton pRipple type="button" (click)="resetMitarbeiter()" icon="pi pi-times" class="p-button-rounded p-button-danger" styleClass="p-button-sm"></button>
                             </div>
                         </ng-template>
                         
-                        <div class="col">
-                            <button type="button" (click)="showVerfuegbareMitarbeiter()" pButton label="Firma auswählen"></button>
+                        <div class="col" *ngIf="!selectedFirma else showFirma">
+                            <button type="button" (click)="showVerfuegbareFirma()" pButton label="Firma auswählen"></button>
                         </div>
+                        <ng-template #showFirma>
+                            <div class="col">
+                                Firma: {{selectedFirma.name}}
+                                <button pButton pRipple type="button" (click)="resetFirma()" icon="pi pi-times" class="p-button-rounded p-button-danger" styleClass="p-button-sm"></button>
+                            </div>
+                        </ng-template>
+
                         <div class="col">
-                            <button type="button" (click)="showVerfuegbareMitarbeiter()" pButton label="Zeitraum auswählen"></button>
+                            <button pButton type="submit" label="Ausleihen" [disabled]="!form.valid" class="p-button-success p-button-sm"></button>
                         </div>
                     </div>                 
                 </div>

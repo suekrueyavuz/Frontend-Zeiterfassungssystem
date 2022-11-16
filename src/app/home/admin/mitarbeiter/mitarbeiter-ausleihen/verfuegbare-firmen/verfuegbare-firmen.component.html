@@ -1,0 +1,24 @@
+<div class="verfuegbareFirmen">
+    <div class="card">
+        <p-table [columns]="cols" [value]="verfuegbareFirmen" selectionMode="single" [(selection)]="selectedFirma" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user let-rowData let-columns="columns">
+                <tr [pSelectableRow]="user">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<div class="button">
+    <button pButton type="button" label="Auswählen" class="p-button-sm" (click)="selectFirma()"></button>
+</div>

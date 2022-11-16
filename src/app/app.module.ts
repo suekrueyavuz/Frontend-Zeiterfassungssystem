@@ -25,6 +25,7 @@ import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mita
 import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component';
 import { MitarbeiterAusleihenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component';
 import { VerfuegbareMitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-mitarbeiter/verfuegbare-mitarbeiter.component';
+import { VerfuegbareFirmenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-firmen/verfuegbare-firmen.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { VerfuegbareMitarbeiterComponent } from './home/admin/mitarbeiter/mitarb
     ChangeMitarbeiterComponent,
     NewMitarbeiterComponent,
     MitarbeiterAusleihenComponent,
-    VerfuegbareMitarbeiterComponent
+    VerfuegbareMitarbeiterComponent,
+    VerfuegbareFirmenComponent
   ],
   imports: [
     BrowserModule,

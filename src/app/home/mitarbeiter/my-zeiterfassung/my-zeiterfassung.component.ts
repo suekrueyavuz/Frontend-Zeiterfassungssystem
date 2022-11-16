@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MitarbeiterService } from 'src/app/service/mitarbeiter.service';
 
 @Component({
   selector: 'app-my-zeiterfassung',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyZeiterfassungComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mitarbeiterService: MitarbeiterService) { }
 
   ngOnInit(): void {
+  }
+
+  getAusleihungen() {
+    
   }
 
 }

@@ -46,6 +46,18 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  editMitarbeiter(mitarbeiter: User) {
+    const body = {
+      id: mitarbeiter.id,
+      forename: mitarbeiter.forename,
+      surname: mitarbeiter.surname,
+      username: mitarbeiter.username,
+      role: mitarbeiter.role
+    };
+    return this.http.put(this.BASE_URL + 'mitarbeiter/bearbeiten', JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

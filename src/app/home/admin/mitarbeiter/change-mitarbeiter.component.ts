@@ -49,9 +49,12 @@ export class ChangeMitarbeiterComponent implements OnInit {
     this.clickedEdit = false;
   }
 
-  changeMitarbeiter() {
-    console.log(this.selectedMitarbeiter?.forename);
-    
+  editMitarbeiter() {
+    if(this.selectedMitarbeiter) {
+      this.adminService.editMitarbeiter(this.selectedMitarbeiter).subscribe( () =>
+        this.clickedEdit = false
+      );
+    }
   }
 
   closeSelectedMitarbeiter() {

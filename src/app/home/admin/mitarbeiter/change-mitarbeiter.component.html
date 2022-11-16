@@ -4,7 +4,7 @@
         <div *ngIf="!clickedEdit; else usernameBearbeiten" class="col-sm-7">{{ selectedMitarbeiter?.username }}</div>
         <ng-template #usernameBearbeiten>
             <div class="col-sm-7" *ngIf="selectedMitarbeiter">
-                <input type="text" [(ngModel)]="selectedMitarbeiter.username">
+                <input type="text" [value]="selectedMitarbeiter.username">
             </div>
         </ng-template>
         <div class="col-sm-2 text-right">
@@ -18,7 +18,7 @@
         <div *ngIf="!clickedEdit; else vornameBearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.forename }}</div>
         <ng-template #vornameBearbeiten>
             <div class="col-sm-9" *ngIf="selectedMitarbeiter">
-                <input type="text" [(ngModel)]="selectedMitarbeiter.forename">
+                <input type="text" [value]="selectedMitarbeiter.forename">
             </div>
         </ng-template>
     </div>
@@ -27,7 +27,7 @@
         <div *ngIf="!clickedEdit; else nachnameBearbeiten" class="col-sm-9">{{ selectedMitarbeiter?.surname }}</div>
         <ng-template #nachnameBearbeiten>
             <div class="col-sm-9" *ngIf="selectedMitarbeiter">
-                <input type="text" [(ngModel)]="selectedMitarbeiter.surname">
+                <input type="text" [value]="selectedMitarbeiter.surname">
             </div>
         </ng-template>
     </div>
@@ -41,7 +41,7 @@
         </ng-template>
     </div>
     <div *ngIf="clickedEdit">
-        <button pButton type="button" icon="pi pi-check" class=" p-button-success p-button-sm" label="Ändern" (click)="changeMitarbeiter()"></button>
+        <button pButton type="button" icon="pi pi-check" class=" p-button-success p-button-sm" label="Ändern" (click)="editMitarbeiter()"></button>
         <button pButton type="button" icon="pi pi-times" class="p-button-secondary p-button-sm" label="Abbrechen" (click)="clickedEdit = false" style="margin-left: 1rem"></button>
     </div>
 </p-panel>

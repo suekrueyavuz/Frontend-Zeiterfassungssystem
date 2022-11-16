@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class MitarbeiterService {
   }
 
   getAusleihungen(mitarbeiterId:string) {
-    return this.http.get<any>(this.BASE_URL + mitarbeiterId, this.getHeaders())
+    return this.http.get<any>(this.BASE_URL + '/' + mitarbeiterId, this.getHeaders())
     .pipe(retry(1), catchError(this.handleError));
   }
 

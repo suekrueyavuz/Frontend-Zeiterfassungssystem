@@ -15,6 +15,7 @@ import { VerfuegbareMitarbeiterComponent } from './verfuegbare-mitarbeiter/verfu
 })
 export class MitarbeiterAusleihenComponent implements OnInit {
   public form:FormGroup;
+  schichten:string[] = [];
   
   mitarbeiterList:User[] = [];
   firmaList:any[] = [];
@@ -25,15 +26,26 @@ export class MitarbeiterAusleihenComponent implements OnInit {
   constructor(fb:FormBuilder, private adminService: AdminService, public dialogService: DialogService) { 
     this.form = fb.group({
       mitarbeiter:[null , Validators.required],
-      firma:[null, Validators.required]
-    })
+      firma:[null, Validators.required],
+      schicht:[null, Validators.required]
+    });
+    this.schichten = [
+      'ERSTE_SCHICHT',
+      'ZWEITE_SCHICHT',
+      'DRITTE_SCHICHT'
+    ]
   }
 
   ngOnInit(): void {
   }
 
   mitarbeiterAusleihen() {
-    
+    if(this.selectedFirma.id && this.selectedMitarbeiter?.id) {
+      this.adminService.mitarbeiterAusleihen(this.selectedFirma.id, this.selectedMitarbeiter?.id, this.form.value.schicht)
+      .subscribe(value => {
+        console.log(value);
+      })
+    }
   }
 
   showVerfuegbareMitarbeiter() {

@@ -25,9 +25,16 @@
                         </ng-template>
 
                         <div class="col">
-                            <button pButton type="submit" label="Ausleihen" [disabled]="!form.valid" class="p-button-success p-button-sm"></button>
+                            <p-dropdown [options]="schichten" placeholder="Wähle die Schicht" [editable]="true" formControlName="schicht"></p-dropdown>
                         </div>
-                    </div>                 
+                    </div>       
+                    <div class="row" style="margin-top: 1rem;">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <button pButton type="button" (click)="mitarbeiterAusleihen()" label="Ausleihen" [disabled]="!form.valid" class="p-button-success p-button-sm"></button>
+                        </div>
+                    </div>      
                 </div>
             </p-panel>
         </form>

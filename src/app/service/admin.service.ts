@@ -58,6 +58,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  mitarbeiterAusleihen(firmaId:string, mitarbeiterId:string, schicht:string) {
+    return this.http.post<any>(this.BASE_URL + 'firma/' + firmaId + '/mitarbeiter/' + mitarbeiterId + '?schicht=' + schicht, null, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

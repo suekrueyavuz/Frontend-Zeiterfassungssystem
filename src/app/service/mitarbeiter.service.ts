@@ -23,6 +23,16 @@ export class MitarbeiterService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  arbeitszeitenEintragen(ausleihung: any) {
+    const body = {
+      startZeit: ausleihung.startZeit,
+      endZeit: ausleihung.endZeit,
+      arbeitstag: ausleihung.tag
+    };
+    return this.http.post<any>(this.BASE_URL + '/' + ausleihung.mitarbeiter.id + '/firma/' + ausleihung.auftraggeberFirma.id, JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

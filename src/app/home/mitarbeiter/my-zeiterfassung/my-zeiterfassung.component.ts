@@ -13,6 +13,8 @@ export class MyZeiterfassungComponent implements OnInit {
   me: User;
   ausleihungen:any[] = [];
   clonedAusleihungen: { [s: string]: any; } = {};
+  startZeit?: Date;
+  endZeit?: Date;
 
   constructor(private mitarbeiterService: MitarbeiterService, private loginService: LoginService) {
     this.me = JSON.parse(localStorage.getItem('user') || '{}');
@@ -23,13 +25,18 @@ export class MyZeiterfassungComponent implements OnInit {
   }
 
   getAusleihungen() {
-    this.mitarbeiterService.getAusleihungen(this.me.id || '').subscribe(value => {
+    this.mitarbeiterService.getAusleihungen(this.me.id || '').subscribe(value => {   
       for(let i=0; i<value.length; i++) {
-        value[i].auftraggeberFirma = value[i].auftraggeberFirma.name;
-        value[i].mitarbeiter = value[i].mitarbeiter.forename;
+        value[i].startZeit = this.convertStringToDate(value[i].tag, value[i].startZeit);
+        value[i].endZeit = this.convertStringToDate(value[i].tag, value[i].endZeit);
       }
       this.ausleihungen = value;
     })
+  }
+
+  convertStringToDate(tag:string, uhrzeit:string) {
+    let date = tag + 'T' + uhrzeit;
+    return new Date(date);
   }
 
   onRowEditInit(ausleihung: any) {
@@ -41,6 +48,9 @@ export class MyZeiterfassungComponent implements OnInit {
     ausleihung.startZeit = startZeit;
     const endZeit = ausleihung.endZeit.toLocaleTimeString();
     ausleihung.endZeit = endZeit;
+    this.mitarbeiterService.arbeitszeitenEintragen(ausleihung).subscribe(value => {
+      window.location.reload();
+    })
   }
 
   onRowEditCancel(ausleihung: any, index: number) {

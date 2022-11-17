@@ -17,10 +17,10 @@
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                {{ausleihung.auftraggeberFirma}}
+                                {{ausleihung.auftraggeberFirma.name}}
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{ausleihung.auftraggeberFirma}}
+                                {{ausleihung.auftraggeberFirma.name}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
@@ -37,20 +37,20 @@
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <p-calendar [(ngModel)]="ausleihung.startZeit" [showTime]="true" [timeOnly]="true"></p-calendar>
+                                <p-calendar [(ngModel)]="ausleihung.startZeit" [timeOnly]="true"></p-calendar>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{ausleihung.startZeit}}
+                                {{ausleihung.startZeit.toLocaleTimeString()}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <p-calendar [(ngModel)]="ausleihung.endZeit" [showTime]="true" [timeOnly]="true"></p-calendar>
+                                <p-calendar [(ngModel)]="ausleihung.endZeit" [timeOnly]="true"></p-calendar>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{ausleihung.endZeit}}
+                                {{ausleihung.endZeit.toLocaleTimeString()}}
                             </ng-template>
                         </p-cellEditor>
                     </td>

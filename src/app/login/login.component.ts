@@ -29,23 +29,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.form.value.username, this.form.value.password).subscribe(data => {
+      const user = new User(data.username, data.role, data.id);
+      localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', data.token);
-      if(data.role === 'ROLE_MITARBEITER') {
-        this.mitarbeiterService.getMe(data.username).subscribe(response => {
-          const user = new User(response.username, response.role, response.id, response.forename, response.surname);
-          localStorage.setItem('user', JSON.stringify(user));
-          this.loginService.setUser(user);
-          this.loginService.setIsLoggedIn(true);
-          this.router.navigate(['/home']);
-        })
-      } else {
-        const user = new User(data.username, data.role);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', data.token);
-        this.loginService.setUser(user);
-        this.loginService.setIsLoggedIn(true);
-        this.router.navigate(['/home']);
-      }
+      this.loginService.setUser(user);
+      this.loginService.setIsLoggedIn(true);
+      this.router.navigate(['/home']);
     });;
   }
 

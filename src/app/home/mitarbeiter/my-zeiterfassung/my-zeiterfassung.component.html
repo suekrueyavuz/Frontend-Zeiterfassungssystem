@@ -1,17 +1,85 @@
 <div class="myZeiterfassung">
     <div class="card">
-        <p-table [columns]="cols" [value]="ausleihungen" selectionMode="single" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
-            <ng-template pTemplate="header" let-columns>
+        <p-table [value]="ausleihungen" dataKey="id" editMode="row" [tableStyle]="{'min-width': '75rem'}">
+            <ng-template pTemplate="header">
                 <tr>
-                    <th *ngFor="let col of columns">
-                        {{col.header}}
-                    </th>
+                    <th style="width:10%">Firma</th>
+                    <th style="width:20%">Tag</th>
+                    <th style="width:15%">Startzeit</th>
+                    <th style="width:15%">Endzeit</th>
+                    <th style="width:15%">Schicht</th>
+                    <th style="width:20%">Zeitstatus</th>
+                    <th style="width:20%"></th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-user let-rowData let-columns="columns">
-                <tr [pSelectableRow]="user">
-                    <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
+            <ng-template pTemplate="body" let-ausleihung let-editing="editing" let-ri="rowIndex">
+                <tr [pEditableRow]="ausleihung">
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                {{ausleihung.auftraggeberFirma}}
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.auftraggeberFirma}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                {{ausleihung.tag}}
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.tag}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="ausleihung.startZeit" required>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.startZeit}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="ausleihung.endZeit">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.endZeit}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                {{ausleihung.schicht}}
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.schicht}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                {{ausleihung.zeitStatus}}
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ausleihung.zeitStatus}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <div class="flex align-items-center justify-content-center gap-2">
+                            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(ausleihung)" class="p-button-rounded p-button-text"></button>
+                            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(ausleihung)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(ausleihung, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                        </div>
                     </td>
                 </tr>
             </ng-template>

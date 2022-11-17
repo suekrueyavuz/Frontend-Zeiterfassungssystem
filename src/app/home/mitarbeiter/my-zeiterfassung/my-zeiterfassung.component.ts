@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectItem } from 'primeng/api';
 import { User } from 'src/app/model/user';
 import { LoginService } from 'src/app/service/login.service';
 import { MitarbeiterService } from 'src/app/service/mitarbeiter.service';
@@ -11,8 +12,7 @@ import { MitarbeiterService } from 'src/app/service/mitarbeiter.service';
 export class MyZeiterfassungComponent implements OnInit {
   me: User;
   ausleihungen:any[] = [];
-
-  cols: any[] = [];
+  clonedAusleihungen: { [s: string]: any; } = {};
 
   constructor(private mitarbeiterService: MitarbeiterService, private loginService: LoginService) {
     this.me = JSON.parse(localStorage.getItem('user') || '{}');
@@ -20,16 +20,6 @@ export class MyZeiterfassungComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAusleihungen();
-
-    this.cols = [
-      { field: 'auftraggeberFirma', header: 'AuftraggeberFirma' },
-      { field: 'tag', header: 'Tag' },
-      { field: 'startZeit', header: 'Startzeit' },
-      { field: 'endZeit', header: 'Endzeit' },
-      { field: 'schicht', header: 'Schicht' },
-      { field: 'zeitStatus', header: 'Zeitstatus' },
-      { field: 'ueberStunde', header: 'Überstunden' },
-    ];
   }
 
   getAusleihungen() {
@@ -40,6 +30,19 @@ export class MyZeiterfassungComponent implements OnInit {
       }
       this.ausleihungen = value;
     })
+  }
+
+  onRowEditInit(ausleihung: any) {
+    this.clonedAusleihungen[ausleihung.id] = {...ausleihung};
+  }
+
+  onRowEditSave(ausleihung: any) {
+    console.log(ausleihung.startZeit);
+  }
+
+  onRowEditCancel(ausleihung: any, index: number) {
+    this.ausleihungen[index] = this.clonedAusleihungen[ausleihung.id];
+    delete this.clonedAusleihungen[ausleihung.id];
   }
 
 }

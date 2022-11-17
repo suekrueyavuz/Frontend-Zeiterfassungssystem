@@ -11,6 +11,7 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {MenuModule} from 'primeng/menu';
 import {MenubarModule} from 'primeng/menubar';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {CalendarModule} from 'primeng/calendar';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -57,7 +58,8 @@ import { VerfuegbareFirmenComponent } from './home/admin/mitarbeiter/mitarbeiter
     ToolbarModule,
     MenuModule,
     MenubarModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    CalendarModule
   ],
   providers: [DynamicDialogModule],
   bootstrap: [AppComponent]

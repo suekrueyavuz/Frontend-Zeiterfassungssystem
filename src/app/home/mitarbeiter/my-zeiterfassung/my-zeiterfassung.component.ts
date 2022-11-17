@@ -33,11 +33,14 @@ export class MyZeiterfassungComponent implements OnInit {
   }
 
   onRowEditInit(ausleihung: any) {
-    this.clonedAusleihungen[ausleihung.id] = {...ausleihung};
+    this.clonedAusleihungen[ausleihung.id] = {...ausleihung};   
   }
 
   onRowEditSave(ausleihung: any) {
-    console.log(ausleihung.startZeit);
+    const startZeit = ausleihung.startZeit.toLocaleTimeString();
+    ausleihung.startZeit = startZeit;
+    const endZeit = ausleihung.endZeit.toLocaleTimeString();
+    ausleihung.endZeit = endZeit;
   }
 
   onRowEditCancel(ausleihung: any, index: number) {

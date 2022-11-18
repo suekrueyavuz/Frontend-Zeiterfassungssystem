@@ -9,7 +9,6 @@ import { User } from '../model/user';
 export class MitarbeiterService {
   BASE_URL: string = 'http://localhost:8080/mitarbeiter';
   headers: any;
-  options: any;
 
   constructor(private http: HttpClient) { }
 

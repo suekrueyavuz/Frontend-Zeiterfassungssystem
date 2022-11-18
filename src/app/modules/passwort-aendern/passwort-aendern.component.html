@@ -1,0 +1,52 @@
+<form (ngSubmit)="passwortAendern()" [formGroup]="form">
+    <p-panel header="Passwort Ändern">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Altes Password:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="password" formControlName="altesPasswort" class="form-control" name="altesPasswort">
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="form.controls['altesPasswort'].valid || !form.controls['altesPasswort'].dirty" class="alert alert-danger">
+                        Altes Passwort is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Neues Password:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="password" formControlName="neuesPasswort" class="form-control" name="neuesPasswort">
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="form.controls['neuesPasswort'].valid || !form.controls['neuesPasswort'].dirty" class="alert alert-danger">
+                        Password is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Neues Password bestätigen:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="password" formControlName="neuesPasswort2" class="form-control" name="neuesPasswort2">
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="form.controls['neuesPasswort2'].valid || !form.controls['neuesPasswort2'].dirty" class="alert alert-danger">
+                        Password is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row" style="margin-top: 1rem;">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-6">
+                    <button pButton type="submit" label="Login" [disabled]="!form.valid" class="p-button-sm"></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+        </div>
+    </p-panel>
+</form>

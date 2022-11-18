@@ -39,6 +39,10 @@ export class HeaderComponent implements OnInit {
       ]},
       {label: 'Firma', routerLink: '/admin/firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
+      {label: 'Einstellungen', visible: (this.userHasRole('ROLE_FIRMA') || this.userHasRole('ROLE_SCHICHTLEITER')) && this.isLoggedIn,
+        items: [
+          {label: 'Passwort ändern', routerLink: ['/einstellungen/passwort']}
+        ]},
       {label: 'Logout', icon: 'pi pi-power-off', command: () => this.logout(), visible: this.isLoggedIn}    
     ];
   }

@@ -20,13 +20,13 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component';
-import { MitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter.component';
 import { FirmaComponent } from './home/admin/firma/firma.component';
 import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/change-mitarbeiter.component';
 import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component';
 import { MitarbeiterAusleihenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component';
 import { VerfuegbareMitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-mitarbeiter/verfuegbare-mitarbeiter.component';
 import { VerfuegbareFirmenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-firmen/verfuegbare-firmen.component';
+import { AlleMitarbeiterComponent } from './home/admin/mitarbeiter/alle-mitarbeiter/alle-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +35,13 @@ import { VerfuegbareFirmenComponent } from './home/admin/mitarbeiter/mitarbeiter
     HomeComponent,
     HeaderComponent,
     MyZeiterfassungComponent,
-    MitarbeiterComponent,
     FirmaComponent,
     ChangeMitarbeiterComponent,
     NewMitarbeiterComponent,
     MitarbeiterAusleihenComponent,
     VerfuegbareMitarbeiterComponent,
-    VerfuegbareFirmenComponent
+    VerfuegbareFirmenComponent,
+    AlleMitarbeiterComponent
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,11 @@ import { User } from 'src/app/model/user';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
-  selector: 'app-mitarbeiter',
-  templateUrl: './mitarbeiter.component.html',
-  styleUrls: ['./mitarbeiter.component.css']
+  selector: 'app-alle-mitarbeiter',
+  templateUrl: './alle-mitarbeiter.component.html',
+  styleUrls: ['./alle-mitarbeiter.component.css']
 })
-export class MitarbeiterComponent implements OnInit {
+export class AlleMitarbeiterComponent implements OnInit {
   allMitarbeiter: User[] = [];
   selectedMitarbeiter?: User;
 
@@ -32,5 +32,4 @@ export class MitarbeiterComponent implements OnInit {
       this.allMitarbeiter = data;
     })
   }
-
 }

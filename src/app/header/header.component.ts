@@ -31,8 +31,9 @@ export class HeaderComponent implements OnInit {
   updateItems() {
     this.headers = [
       {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/home'], visible: this.isLoggedIn},
-      {label: 'Mitarbeiter', routerLink: '/admin/mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn,
+      {label: 'Mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn,
         items: [
+          {label: 'Alle Mitarbeiter', routerLink: ['/admin/mitarbeiter']},
           {label: 'Neu', icon: 'pi pi-fw pi-plus', routerLink: ['/admin/mitarbeiter/neu']},
           {label: 'Ausleihen', icon: 'pi pi-arrow-up-right', routerLink: ['/admin/mitarbeiter/ausleihen']}    
       ]},

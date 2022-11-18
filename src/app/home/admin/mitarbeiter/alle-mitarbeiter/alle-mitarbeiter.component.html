@@ -1,8 +1,15 @@
 <h5 class="title">Klicken Sie auf den Mitarbeiter, um bearbeiten zu können.</h5>
 <div class="mitarbeiterCard">
     <div class="card">
-        <p-table [columns]="cols" [value]="allMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
-            <ng-template pTemplate="header" let-columns>
+        <p-table #dt [columns]="cols" [value]="allMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" 
+        dataKey="id" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]">
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">        
+                <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Suchen" (input)="dt.filterGlobal($any($event.target).value, 'contains')" style="width: 15rem">
+            </div>
+        </ng-template>    
+        <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
                         {{col.header}}

@@ -18,11 +18,7 @@ export class LoginComponent implements OnInit {
       username:[null , Validators.required],
       password:[null, Validators.required]
     })
-    this.loginService.getIsLoggedIn().subscribe((value) => {
-      if(value) {
-        this.router.navigate(['/home']);
-      }
-    })
+    this.loginService.logout();
   }
 
   ngOnInit(): void {  }

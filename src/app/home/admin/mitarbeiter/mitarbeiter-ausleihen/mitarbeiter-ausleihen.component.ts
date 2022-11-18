@@ -42,8 +42,9 @@ export class MitarbeiterAusleihenComponent implements OnInit {
   mitarbeiterAusleihen() {
     if(this.selectedFirma.id && this.selectedMitarbeiter?.id) {
       this.adminService.mitarbeiterAusleihen(this.selectedFirma.id, this.selectedMitarbeiter?.id, this.form.value.schicht)
-      .subscribe(value => {
-        console.log(value);
+      .subscribe(() => {
+        this.resetFirma();
+        this.resetMitarbeiter();
       })
     }
   }

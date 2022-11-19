@@ -62,6 +62,14 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  reportRunterladen(firma:any) {
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+    return this.http.get('http://localhost:8080/firma/' + firma.id + '/report', {headers:headers, responseType: 'blob', observe: 'response'})
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

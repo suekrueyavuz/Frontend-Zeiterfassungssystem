@@ -41,11 +41,13 @@ export class FirmaComponent implements OnInit {
 
   reportRunterladen() {
     this.adminService.reportRunterladen(this.selectedFirma).subscribe((response) => {
+      var contentDisposition = response.headers.get('content-disposition');
+      var filename = contentDisposition?.split(';')[1].split('filename')[1].split('=')[1].trim();
       let blob: Blob = response.body as Blob;
       var downloadURL = window.URL.createObjectURL(blob);
       var link = document.createElement('a');
       link.href = downloadURL;
-      link.download = 'report.xlsx';
+      link.download = filename || 'report.xlsx';
       link.click();
     })
   }

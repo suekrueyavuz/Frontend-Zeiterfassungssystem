@@ -24,7 +24,15 @@ export class FirmaService {
     return this.http.get<any>(this.BASE_URL + '/' + firmaId + '/ausgelieheneMitarbeiter', this.getHeaders())
     .pipe(retry(1), catchError(this.handleError));
   }
-  
+
+  getReportFuerZeitraum(firmaId:string, zeitraumVon:string, zeitraumBis:string) {
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+    return this.http.get('http://localhost:8080/firma/' + firmaId + '/export?von=' + zeitraumVon + '&bis=' + zeitraumBis, {headers:headers, responseType: 'blob', observe: 'response'})
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

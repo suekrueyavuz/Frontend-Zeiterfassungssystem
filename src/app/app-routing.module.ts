@@ -11,6 +11,7 @@ import { MyZeiterfassungComponent } from "./home/mitarbeiter/my-zeiterfassung/my
 import { LoginComponent } from "./login/login.component";
 import { PasswortAendernComponent } from "./modules/passwort-aendern/passwort-aendern.component";
 import { AuthGuard } from "./service/auth.guard";
+import { ReportRunterladenComponent } from "./home/firma/report-runterladen/report-runterladen.component";
 
 const routes: Routes = [
     {
@@ -65,6 +66,14 @@ const routes: Routes = [
     {
       path: 'firma/ausgelieheneMitarbeiter',
       component: AusgelieheneMitarbeiterComponent,
+      canActivate: [AuthGuard],
+      data: {
+        role: ['ROLE_FIRMA']
+      }
+    },
+    {
+      path: 'firma/exportReport',
+      component: ReportRunterladenComponent,
       canActivate: [AuthGuard],
       data: {
         role: ['ROLE_FIRMA']

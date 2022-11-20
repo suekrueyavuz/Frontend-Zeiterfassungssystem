@@ -30,6 +30,7 @@ import { PasswortAendernComponent } from './modules/passwort-aendern/passwort-ae
 import { AlleFirmenComponent } from './home/admin/firma/alle-firmen/alle-firmen.component';
 import { NewFirmaComponent } from './home/admin/firma/new-firma/new-firma.component';
 import { AusgelieheneMitarbeiterComponent } from './home/firma/ausgeliehene-mitarbeiter/ausgeliehene-mitarbeiter.component';
+import { ReportRunterladenComponent } from './home/firma/report-runterladen/report-runterladen.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AusgelieheneMitarbeiterComponent } from './home/firma/ausgeliehene-mita
     PasswortAendernComponent,
     AlleFirmenComponent,
     NewFirmaComponent,
-    AusgelieheneMitarbeiterComponent
+    AusgelieheneMitarbeiterComponent,
+    ReportRunterladenComponent
   ],
   imports: [
     BrowserModule,

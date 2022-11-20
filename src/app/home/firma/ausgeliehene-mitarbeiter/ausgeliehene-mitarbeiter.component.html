@@ -1,7 +1,8 @@
 <div class="ausgelieheneMitarbeiter">
     <div class="card">
         <p-table #dt [value]="ausgelieheneMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" 
-        dataKey="id" [tableStyle]="{'min-width': '75rem'}" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]">
+        dataKey="id" [tableStyle]="{'min-width': '75rem'}" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]"
+        [globalFilterFields]="['mitarbeiter.forename', 'mitarbeiter.surname', 'tag', 'schicht', 'zeitStatus']">
         <ng-template pTemplate="caption">
             <div style="text-align: right">        
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>

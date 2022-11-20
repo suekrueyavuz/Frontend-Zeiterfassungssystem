@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
           {label: 'Runterladen', routerLink: ['/firma/exportReport']}
         ]
       },
-      {label: 'Mitarbeiter' , visible: this.userHasRole('ROLE_FIRMA') && this.isLoggedIn,
+      {label: 'Mitarbeiter' , visible: (this.userHasRole('ROLE_FIRMA') || this.userHasRole('ROLE_SCHICHTLEITER')) && this.isLoggedIn,
         items: [
           {label: 'Ausgeliehene Mitarbeiter', icon: 'pi pi-users', routerLink: ['/firma/ausgelieheneMitarbeiter']}
         ]

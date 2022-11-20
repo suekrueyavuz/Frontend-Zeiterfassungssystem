@@ -68,7 +68,7 @@ const routes: Routes = [
       component: AusgelieheneMitarbeiterComponent,
       canActivate: [AuthGuard],
       data: {
-        role: ['ROLE_FIRMA']
+        role: ['ROLE_FIRMA', 'ROLE_SCHICHTLEITER']
       }
     },
     {

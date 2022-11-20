@@ -52,8 +52,8 @@
                                 <p-calendar [(ngModel)]="ausleihung.endZeit" [timeOnly]="true"></p-calendar>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                <span *ngIf="ausleihung.startZeit">
-                                    {{ausleihung.startZeit.toLocaleTimeString()}}
+                                <span *ngIf="ausleihung.endZeit">
+                                    {{ausleihung.endZeit.toLocaleTimeString()}}
                                 </span>
                             </ng-template>
                         </p-cellEditor>

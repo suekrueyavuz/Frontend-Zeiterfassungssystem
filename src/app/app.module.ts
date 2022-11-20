@@ -29,6 +29,7 @@ import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/alle-mitarb
 import { PasswortAendernComponent } from './modules/passwort-aendern/passwort-aendern.component';
 import { AlleFirmenComponent } from './home/admin/firma/alle-firmen/alle-firmen.component';
 import { NewFirmaComponent } from './home/admin/firma/new-firma/new-firma.component';
+import { AusgelieheneMitarbeiterComponent } from './home/firma/ausgeliehene-mitarbeiter/ausgeliehene-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NewFirmaComponent } from './home/admin/firma/new-firma/new-firma.compon
     AlleMitarbeiterComponent,
     PasswortAendernComponent,
     AlleFirmenComponent,
-    NewFirmaComponent
+    NewFirmaComponent,
+    AusgelieheneMitarbeiterComponent
   ],
   imports: [
     BrowserModule,

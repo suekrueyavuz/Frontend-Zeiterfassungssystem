@@ -14,7 +14,7 @@ export class MyZeiterfassungComponent implements OnInit {
   ausleihungen:any[] = [];
   clonedAusleihungen: { [s: string]: any; } = {};
 
-  constructor(private mitarbeiterService: MitarbeiterService, private loginService: LoginService) {
+  constructor(private mitarbeiterService: MitarbeiterService) {
     this.me = JSON.parse(localStorage.getItem('user') || '{}');
   }
 

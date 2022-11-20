@@ -20,6 +20,11 @@ export class FirmaService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  getAusgelieheneMitarbeiter(firmaId:string) {
+    return this.http.get<any>(this.BASE_URL + '/' + firmaId + '/ausgelieheneMitarbeiter', this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+  
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

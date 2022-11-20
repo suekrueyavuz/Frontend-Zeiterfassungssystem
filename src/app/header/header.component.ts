@@ -48,6 +48,11 @@ export class HeaderComponent implements OnInit {
           {label: 'Runterladen'}
         ]
       },
+      {label: 'Mitarbeiter' , visible: this.userHasRole('ROLE_FIRMA') && this.isLoggedIn,
+        items: [
+          {label: 'Ausgeliehene Mitarbeiter', icon: 'pi pi-users', routerLink: ['/firma/ausgelieheneMitarbeiter']}
+        ]
+      },
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
       {label: 'Einstellungen', visible: (this.userHasRole('ROLE_FIRMA') || this.userHasRole('ROLE_SCHICHTLEITER')) && this.isLoggedIn,
         items: [

@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { Firma } from 'src/app/model/firma';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
-  selector: 'app-firma',
-  templateUrl: './firma.component.html',
-  styleUrls: ['./firma.component.css']
+  selector: 'app-alle-firmen',
+  templateUrl: './alle-firmen.component.html',
+  styleUrls: ['./alle-firmen.component.css']
 })
-export class FirmaComponent implements OnInit {
+export class AlleFirmenComponent implements OnInit {
   allFirma: Firma[] = [];
   selectedFirma?: Firma;
 
   cols: any[] = [];
-  items: MenuItem[] = [];
 
   constructor(private adminService: AdminService) { }
 
@@ -25,12 +23,6 @@ export class FirmaComponent implements OnInit {
       { field: 'username', header: 'Username' },
       { field: 'name', header: 'Name' }
     ];
-
-    this.items = [{
-      items: [
-          {label: 'Report Runterladen', icon: 'pi pi-fw pi-pencil', command: () => this.reportRunterladen()}
-      ]
-    }];
   }
 
   getAllFirma() {
@@ -49,6 +41,12 @@ export class FirmaComponent implements OnInit {
       link.href = downloadURL;
       link.download = filename || 'report.xlsx';
       link.click();
+    })
+  }
+
+  firmaLoeschen() {
+    this.adminService.deleteFirma(this.selectedFirma).subscribe(() => {
+      window.location.reload();
     })
   }
 

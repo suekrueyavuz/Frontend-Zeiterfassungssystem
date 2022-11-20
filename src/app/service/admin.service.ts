@@ -25,6 +25,20 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  createNewFirma(name:string, username:string, password:string, ersteSchicht:number, zweiteSchicht:number, dritteSchicht:number) {
+    const body = {
+      name: name,
+      username: username,
+      password: password,
+      ersteSchicht: ersteSchicht,
+      zweiteSchicht: zweiteSchicht,
+      dritteSchicht: dritteSchicht
+    };
+
+    return this.http.post<any>(this.BASE_URL + 'firma', JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getAllMitarbeiter() {
     return this.http.get<any>(this.BASE_URL + 'mitarbeiter', this.getHeaders())
     .pipe(retry(1), catchError(this.handleError));
@@ -42,6 +56,11 @@ export class AdminService {
 
   deleteMitarbeiter(mitarbeiterId: string) {
     return this.http.delete(this.BASE_URL + 'mitarbeiter/' + mitarbeiterId, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
+  deleteFirma(firma: any) {
+    return this.http.delete(this.BASE_URL + 'firma/' + firma.id, this.getHeaders())
     .pipe(retry(1), catchError(this.handleError));
   }
 

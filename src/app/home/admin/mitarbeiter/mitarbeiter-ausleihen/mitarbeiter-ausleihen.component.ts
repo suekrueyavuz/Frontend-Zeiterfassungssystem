@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogService } from 'primeng/dynamicdialog';
 import { User } from 'src/app/model/user';
 import { AdminService } from 'src/app/service/admin.service';
-import { FirmaComponent } from '../../firma/firma.component';
 import { VerfuegbareFirmenComponent } from './verfuegbare-firmen/verfuegbare-firmen.component';
 import { VerfuegbareMitarbeiterComponent } from './verfuegbare-mitarbeiter/verfuegbare-mitarbeiter.component';
 

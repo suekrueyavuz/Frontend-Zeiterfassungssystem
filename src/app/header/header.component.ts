@@ -37,7 +37,12 @@ export class HeaderComponent implements OnInit {
           {label: 'Neu', icon: 'pi pi-fw pi-plus', routerLink: ['/admin/mitarbeiter/neu']},
           {label: 'Ausleihen', icon: 'pi pi-arrow-up-right', routerLink: ['/admin/mitarbeiter/ausleihen']}    
       ]},
-      {label: 'Firma', routerLink: '/admin/firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn},
+      {label: 'Firma', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn,
+        items: [
+          {label: 'Alle Firmen', routerLink: ['/admin/firma']},
+          {label: 'Neu', icon: 'pi pi-fw pi-plus', routerLink: ['/admin/firma/neu']},
+        ]  
+      },
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
       {label: 'Einstellungen', visible: (this.userHasRole('ROLE_FIRMA') || this.userHasRole('ROLE_SCHICHTLEITER')) && this.isLoggedIn,
         items: [

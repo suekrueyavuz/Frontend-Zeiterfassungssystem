@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
-import { FirmaComponent } from "./home/admin/firma/firma.component";
+import { AlleFirmenComponent } from "./home/admin/firma/alle-firmen/alle-firmen.component";
+import { NewFirmaComponent } from "./home/admin/firma/new-firma/new-firma.component";
 import { AlleMitarbeiterComponent } from "./home/admin/mitarbeiter/alle-mitarbeiter/alle-mitarbeiter.component";
 import { MitarbeiterAusleihenComponent } from "./home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component";
 import { NewMitarbeiterComponent } from "./home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component";
@@ -37,16 +38,24 @@ const routes: Routes = [
       }
     },
     {
-      path: 'admin/firma', 
-      component: FirmaComponent,
+      path: 'admin/mitarbeiter/neu',
+      component: NewMitarbeiterComponent,
       canActivate: [AuthGuard],
       data: {
         role: ['ROLE_ADMIN']
       }
     },
     {
-      path: 'admin/mitarbeiter/neu',
-      component: NewMitarbeiterComponent,
+      path: 'admin/firma',
+      component: AlleFirmenComponent,
+      canActivate: [AuthGuard],
+      data : {
+        role: ['ROLE_ADMIN']
+      }
+    },
+    {
+      path: 'admin/firma/neu',
+      component: NewFirmaComponent,
       canActivate: [AuthGuard],
       data: {
         role: ['ROLE_ADMIN']

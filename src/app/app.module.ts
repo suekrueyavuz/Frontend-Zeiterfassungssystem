@@ -20,7 +20,6 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MyZeiterfassungComponent } from './home/mitarbeiter/my-zeiterfassung/my-zeiterfassung.component';
-import { FirmaComponent } from './home/admin/firma/firma.component';
 import { NewMitarbeiterComponent } from './home/admin/mitarbeiter/new-mitarbeiter/new-mitarbeiter.component';
 import { MitarbeiterAusleihenComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/mitarbeiter-ausleihen.component';
 import { VerfuegbareMitarbeiterComponent } from './home/admin/mitarbeiter/mitarbeiter-ausleihen/verfuegbare-mitarbeiter/verfuegbare-mitarbeiter.component';
@@ -28,6 +27,8 @@ import { VerfuegbareFirmenComponent } from './home/admin/mitarbeiter/mitarbeiter
 import { AlleMitarbeiterComponent } from './home/admin/mitarbeiter/alle-mitarbeiter/alle-mitarbeiter.component';
 import { ChangeMitarbeiterComponent } from './home/admin/mitarbeiter/alle-mitarbeiter/change-mitarbeiter.component';
 import { PasswortAendernComponent } from './modules/passwort-aendern/passwort-aendern.component';
+import { AlleFirmenComponent } from './home/admin/firma/alle-firmen/alle-firmen.component';
+import { NewFirmaComponent } from './home/admin/firma/new-firma/new-firma.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,15 @@ import { PasswortAendernComponent } from './modules/passwort-aendern/passwort-ae
     HomeComponent,
     HeaderComponent,
     MyZeiterfassungComponent,
-    FirmaComponent,
     ChangeMitarbeiterComponent,
     NewMitarbeiterComponent,
     MitarbeiterAusleihenComponent,
     VerfuegbareMitarbeiterComponent,
     VerfuegbareFirmenComponent,
     AlleMitarbeiterComponent,
-    PasswortAendernComponent
+    PasswortAendernComponent,
+    AlleFirmenComponent,
+    NewFirmaComponent
   ],
   imports: [
     BrowserModule,

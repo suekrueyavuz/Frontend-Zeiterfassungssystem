@@ -1,0 +1,92 @@
+<div class="container">
+    <form (ngSubmit)="createNewFirma()" [formGroup]="form">
+        <p-panel header="Neue Firma">
+            <div style="margin: 1rem;">
+                <div class="row">
+                    <div class="col">
+                        Name:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="text" formControlName="name" class="form-control" name="name">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['name'].valid || !form.controls['name'].dirty" class="alert alert-danger">
+                            Name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Username:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="text" formControlName="username" class="form-control" name="username">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['username'].valid || !form.controls['username'].dirty" class="alert alert-danger">
+                            Username is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Password:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="password" formControlName="password" class="form-control" name="password">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['password'].valid || !form.controls['password'].dirty" class="alert alert-danger">
+                            Password is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Erste Schicht:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="number" formControlName="ersteSchicht" class="form-control" name="ersteSchicht">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['ersteSchicht'].valid || !form.controls['ersteSchicht'].dirty" class="alert alert-danger">
+                            Erste Schicht is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Zweite Schicht:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="number" formControlName="zweiteSchicht" class="form-control" name="zweiteSchicht">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['zweiteSchicht'].valid || !form.controls['zweiteSchicht'].dirty" class="alert alert-danger">
+                            Zweite Schicht is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        Dritte Schicht:
+                    </div>
+                    <div class="col">
+                        <input pInputText type="number" formControlName="dritteSchicht" class="form-control" name="dritteSchicht">
+                    </div>
+                    <div class="col">
+                        <div [hidden]="form.controls['dritteSchicht'].valid || !form.controls['dritteSchicht'].dirty" class="alert alert-danger">
+                            Dritte Schicht is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" style="margin-top: 1rem;">
+                    <div class="col-10"></div>
+                    <div class="col-2">
+                        <button pButton type="submit" label="Erstellen" [disabled]="!form.valid" class="p-button-sm"></button>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+    </form>
+</div>

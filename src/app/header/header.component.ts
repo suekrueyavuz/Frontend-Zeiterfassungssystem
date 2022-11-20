@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
       {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/home'], visible: this.isLoggedIn},
       {label: 'Mitarbeiter', visible: this.userHasRole('ROLE_ADMIN') && this.isLoggedIn,
         items: [
-          {label: 'Alle Mitarbeiter', routerLink: ['/admin/mitarbeiter']},
+          {label: 'Alle Mitarbeiter', icon: 'pi pi-users', routerLink: ['/admin/mitarbeiter']},
           {label: 'Neu', icon: 'pi pi-fw pi-plus', routerLink: ['/admin/mitarbeiter/neu']},
           {label: 'Ausleihen', icon: 'pi pi-arrow-up-right', routerLink: ['/admin/mitarbeiter/ausleihen']}    
       ]},
@@ -42,6 +42,11 @@ export class HeaderComponent implements OnInit {
           {label: 'Alle Firmen', routerLink: ['/admin/firma']},
           {label: 'Neu', icon: 'pi pi-fw pi-plus', routerLink: ['/admin/firma/neu']},
         ]  
+      },
+      {label: 'Reports' , visible: this.userHasRole('ROLE_FIRMA') && this.isLoggedIn,
+        items: [
+          {label: 'Runterladen'}
+        ]
       },
       {label: 'Ausleihungen', routerLink: '/zeiterfassung', visible: this.userHasRole('ROLE_MITARBEITER') && this.isLoggedIn},
       {label: 'Einstellungen', visible: (this.userHasRole('ROLE_FIRMA') || this.userHasRole('ROLE_SCHICHTLEITER')) && this.isLoggedIn,

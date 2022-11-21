@@ -10,11 +10,17 @@ import { MitarbeiterService } from 'src/app/service/mitarbeiter.service';
 export class AlleAusgelieheneMitarbeiterComponent implements OnInit {
   ausgelieheneMitarbeiter:any[] = [];
   clonedAusgelieheneMitarbeiter: { [s: string]: any; } = {};
+  zeitStatus:string[] = [];
 
   constructor(private adminService: AdminService, private mitarbeiterService: MitarbeiterService) { }
 
   ngOnInit(): void {
     this.getAusgelieheneMitarbeiter();
+    this.zeitStatus = [
+      'AKZEPTIERT',
+      'ABGELEHNT',
+      'INBEARBEITUNG'
+    ]
   }
 
   getAusgelieheneMitarbeiter() {
@@ -43,7 +49,7 @@ export class AlleAusgelieheneMitarbeiterComponent implements OnInit {
     ausgeliehenerMitarbeiter.startZeit = startZeit;
     const endZeit = ausgeliehenerMitarbeiter.endZeit.toLocaleTimeString();
     ausgeliehenerMitarbeiter.endZeit = endZeit;
-    this.mitarbeiterService.arbeitszeitenEintragen(ausgeliehenerMitarbeiter).subscribe(value => {
+    this.adminService.updateAusgeliehenenMitarbeiter(ausgeliehenerMitarbeiter).subscribe(() => {
       window.location.reload();
     })
   }

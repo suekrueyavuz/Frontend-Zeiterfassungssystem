@@ -86,6 +86,20 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  updateAusgeliehenenMitarbeiter(mitarbeiter:any) {
+    const body = {
+      id: mitarbeiter.mitarbeiter.id,
+      mitarbeiter: mitarbeiter.mitarbeiter,
+      auftraggeberFirma: mitarbeiter.auftraggeberFirma,
+      tag: mitarbeiter.tag,
+      startZeit: mitarbeiter.startZeit,
+      endZeit: mitarbeiter.endZeit,
+      zeitStatus: mitarbeiter.zeitStatus
+    };
+    return this.http.put(this.BASE_URL + 'mitarbeiter/ausgeliehenerMitarbeiter/' + mitarbeiter.mitarbeiter.id, JSON.stringify(body), this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   reportRunterladen(firma:any) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('token')

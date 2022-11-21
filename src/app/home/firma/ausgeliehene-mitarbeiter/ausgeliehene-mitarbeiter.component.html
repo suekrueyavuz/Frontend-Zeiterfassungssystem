@@ -7,7 +7,8 @@
             <div style="text-align: right">
                 <button *ngIf="me.role === 'ROLE_SCHICHTLEITER' && selectedMitarbeiter" style="margin-right: 1rem;" type="button" pButton pRipple icon="pi pi-check" (click)="stundenBestaetigen()" class="mr-2" pTooltip="Bestätigen" tooltipPosition="bottom"></button>    
                 <button *ngIf="me.role === 'ROLE_SCHICHTLEITER' && selectedMitarbeiter" style="margin-right: 1rem;" type="button" pButton pRipple icon="pi pi-times" (click)="stundenAblehnen()" class="mr-2 p-button-danger" pTooltip="Ablehnen" tooltipPosition="bottom"></button>
-                <button *ngIf="me.role === 'ROLE_SCHICHTLEITER' && selectedMitarbeiter" style="margin-right: 1rem;" type="button" pButton pRipple icon="pi pi-bookmark" (click)="feiertagMarkieren()" class="mr-2 p-button-success" pTooltip="Feiertag" tooltipPosition="bottom"></button>        
+                <button *ngIf="me.role === 'ROLE_SCHICHTLEITER' && selectedMitarbeiter" style="margin-right: 1rem;" type="button" pButton pRipple icon="pi pi-bookmark" (click)="feiertagMarkieren()" class="mr-2 p-button-success" pTooltip="Feiertag" tooltipPosition="bottom"></button> 
+                <button *ngIf="me.role === 'ROLE_SCHICHTLEITER' && selectedMitarbeiter" style="margin-right: 1rem;" type="button" pButton pRipple icon="pi pi-bookmark" (click)="alsUeberstundeMarkieren()" class="mr-2 p-button-success" pTooltip="Überstunden" tooltipPosition="bottom"></button>       
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                 <input type="text" pInputText size="50" placeholder="Suchen" (input)="dt.filterGlobal($any($event.target).value, 'contains')" style="width:15rem">
             </div>

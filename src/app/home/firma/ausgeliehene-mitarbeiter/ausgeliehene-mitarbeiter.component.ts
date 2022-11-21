@@ -59,4 +59,10 @@ export class AusgelieheneMitarbeiterComponent implements OnInit {
     })
   }
 
+  alsUeberstundeMarkieren() {
+    this.schichtleiterService.alsUeberstundeMarkieren(this.selectedMitarbeiter).subscribe(() => {
+      window.location.reload();
+    })
+  }
+
 }

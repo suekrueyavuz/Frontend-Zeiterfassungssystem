@@ -31,6 +31,11 @@ export class SchichtleiterService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  alsUeberstundeMarkieren(mitarbeiter:any) {
+    return this.http.post<any>(this.BASE_URL + '/firma/' + mitarbeiter.auftraggeberFirma.id + '/mitarbeiter/' + mitarbeiter.mitarbeiter.id + '?tag=' + mitarbeiter.tag, null, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -81,6 +81,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  getAlleAusgelieheneMitarbeiter() {
+    return this.http.get<any>(this.BASE_URL + 'mitarbeiter/ausgeliehen' , this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   reportRunterladen(firma:any) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('token')

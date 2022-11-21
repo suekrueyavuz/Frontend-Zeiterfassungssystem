@@ -12,6 +12,7 @@ import { LoginComponent } from "./login/login.component";
 import { PasswortAendernComponent } from "./modules/passwort-aendern/passwort-aendern.component";
 import { AuthGuard } from "./service/auth.guard";
 import { ReportRunterladenComponent } from "./home/firma/report-runterladen/report-runterladen.component";
+import { AlleAusgelieheneMitarbeiterComponent } from "./home/admin/mitarbeiter/alle-ausgeliehene-mitarbeiter/alle-ausgeliehene-mitarbeiter.component";
 
 const routes: Routes = [
     {
@@ -82,6 +83,14 @@ const routes: Routes = [
     {
       path: 'admin/mitarbeiter/ausleihen',
       component: MitarbeiterAusleihenComponent,
+      canActivate: [AuthGuard],
+      data: {
+        role: ['ROLE_ADMIN']
+      }
+    },
+    {
+      path: 'admin/mitarbeiter/ausgeliehen',
+      component: AlleAusgelieheneMitarbeiterComponent,
       canActivate: [AuthGuard],
       data: {
         role: ['ROLE_ADMIN']

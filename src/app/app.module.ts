@@ -31,6 +31,7 @@ import { AlleFirmenComponent } from './home/admin/firma/alle-firmen/alle-firmen.
 import { NewFirmaComponent } from './home/admin/firma/new-firma/new-firma.component';
 import { AusgelieheneMitarbeiterComponent } from './home/firma/ausgeliehene-mitarbeiter/ausgeliehene-mitarbeiter.component';
 import { ReportRunterladenComponent } from './home/firma/report-runterladen/report-runterladen.component';
+import { AlleAusgelieheneMitarbeiterComponent } from './home/admin/mitarbeiter/alle-ausgeliehene-mitarbeiter/alle-ausgeliehene-mitarbeiter.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ReportRunterladenComponent } from './home/firma/report-runterladen/repo
     AlleFirmenComponent,
     NewFirmaComponent,
     AusgelieheneMitarbeiterComponent,
-    ReportRunterladenComponent
+    ReportRunterladenComponent,
+    AlleAusgelieheneMitarbeiterComponent
   ],
   imports: [
     BrowserModule,

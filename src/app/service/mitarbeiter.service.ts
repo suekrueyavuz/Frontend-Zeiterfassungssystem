@@ -32,6 +32,11 @@ export class MitarbeiterService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  alsFeiertagMarkieren(mitarbeiter:any) {
+    return this.http.put<any>(this.BASE_URL + '/' + mitarbeiter.mitarbeiter.id  + '/firma/' + mitarbeiter.auftraggeberFirma.id + '?tag=' + mitarbeiter.tag + '&isFeiertag=true', null, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   getHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -13,6 +13,7 @@ export class MyZeiterfassungComponent implements OnInit {
   me: User;
   ausleihungen:any[] = [];
   clonedAusleihungen: { [s: string]: any; } = {};
+  selectedAusleihung:any;
 
   constructor(private mitarbeiterService: MitarbeiterService) {
     this.me = JSON.parse(localStorage.getItem('user') || '{}');
@@ -37,6 +38,14 @@ export class MyZeiterfassungComponent implements OnInit {
   convertStringToDate(tag:string, uhrzeit:string) {
     let date = tag + 'T' + uhrzeit;
     return new Date(date);
+  }
+
+  feiertagMarkieren() {
+    console.log(this.selectedAusleihung);
+    
+    this.mitarbeiterService.alsFeiertagMarkieren(this.selectedAusleihung).subscribe(() => {
+      window.location.reload();
+    })
   }
 
   onRowEditInit(ausleihung: any) {

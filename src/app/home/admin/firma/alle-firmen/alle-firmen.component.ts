@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 import { Firma } from 'src/app/model/firma';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-alle-firmen',
   templateUrl: './alle-firmen.component.html',
-  styleUrls: ['./alle-firmen.component.css']
+  styleUrls: ['./alle-firmen.component.css'],
+  providers: [ConfirmationService]
 })
 export class AlleFirmenComponent implements OnInit {
   allFirma: Firma[] = [];
@@ -13,7 +15,7 @@ export class AlleFirmenComponent implements OnInit {
 
   cols: any[] = [];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     this.getAllFirma();
@@ -45,9 +47,17 @@ export class AlleFirmenComponent implements OnInit {
   }
 
   firmaLoeschen() {
-    this.adminService.deleteFirma(this.selectedFirma).subscribe(() => {
-      window.location.reload();
-    })
+    this.confirmationService.confirm({
+      header: 'Firma löschen',
+      message: 'Möchten Sie die Firma löschen?',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.adminService.deleteFirma(this.selectedFirma).subscribe(() => {
+          window.location.reload();
+        });
+      }
+    });
+
   }
 
 }

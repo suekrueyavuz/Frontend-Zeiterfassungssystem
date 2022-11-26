@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MenuItem, MessageService } from 'primeng/api';
 import { User } from 'src/app/model/user';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-change-mitarbeiter',
   templateUrl: './change-mitarbeiter.component.html',
-  styleUrls: ['./change-mitarbeiter.component.css']
+  styleUrls: ['./change-mitarbeiter.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class ChangeMitarbeiterComponent implements OnInit {
   @Input() selectedMitarbeiter?: User;
@@ -22,7 +23,7 @@ export class ChangeMitarbeiterComponent implements OnInit {
 
   public form:FormGroup;
 
-  constructor(fb:FormBuilder, private adminService: AdminService, private router: Router) {
+  constructor(fb:FormBuilder, private adminService: AdminService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) {
     this.form = fb.group({
       username:[null , Validators.required],
       forename:[null, Validators.required],
@@ -63,9 +64,16 @@ export class ChangeMitarbeiterComponent implements OnInit {
   }
 
   deleteMitarbeiter() {
-    this.adminService.deleteMitarbeiter(this.selectedMitarbeiter?.id || null!).subscribe((value) => {
-      this.closeSelectedMitarbeiter();
-    })
+    this.confirmationService.confirm({
+      header: 'Mitarbeiter löschen',
+      message: 'Möchten Sie den Mitarbeiter löschen?',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.adminService.deleteMitarbeiter(this.selectedMitarbeiter?.id || null!).subscribe((value) => {
+          this.closeSelectedMitarbeiter();
+        })
+      }
+    });
   }
 
 }

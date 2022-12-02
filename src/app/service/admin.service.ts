@@ -100,6 +100,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  resetMitarbeiterPassword(id:string) {
+    return this.http.put(this.BASE_URL + 'mitarbeiter/' + id , null, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   reportRunterladen(firma:any) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('token')

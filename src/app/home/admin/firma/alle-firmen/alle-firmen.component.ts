@@ -53,7 +53,7 @@ export class AlleFirmenComponent implements OnInit {
       icon: 'pi pi-info-circle',
       accept: () => {
         this.adminService.deleteFirma(this.selectedFirma).subscribe(() => {
-          window.location.reload();
+          this.ngOnInit();
         });
       }
     });

@@ -41,7 +41,8 @@ export class ChangeMitarbeiterComponent implements OnInit {
     this.items = [{
       items: [
           {label: 'Bearbeiten', icon: 'pi pi-fw pi-pencil', command: () => this.clickedEdit = !this.clickedEdit},
-          {label: 'Löschen', icon: 'pi pi-fw pi-times', command: () => this.deleteMitarbeiter()}
+          {label: 'Löschen', icon: 'pi pi-fw pi-times', command: () => this.deleteMitarbeiter()},
+          {label: 'Passwort zurücksetzen', command: () => this.resetPassword()}
       ]
     }];
   }
@@ -72,6 +73,17 @@ export class ChangeMitarbeiterComponent implements OnInit {
         this.adminService.deleteMitarbeiter(this.selectedMitarbeiter?.id || null!).subscribe((value) => {
           this.closeSelectedMitarbeiter();
         })
+      }
+    });
+  }
+
+  resetPassword() {
+    this.confirmationService.confirm({
+      header: 'Passwort zurücksetzen',
+      message: 'Möchten Sie das Passwort zurücksetzen?',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.adminService.resetMitarbeiterPassword(this.selectedMitarbeiter?.id || null!).subscribe();
       }
     });
   }

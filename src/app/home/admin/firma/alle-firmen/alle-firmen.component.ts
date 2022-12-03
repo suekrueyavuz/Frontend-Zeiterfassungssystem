@@ -57,7 +57,19 @@ export class AlleFirmenComponent implements OnInit {
         });
       }
     });
+  }
 
+  resetPassword() {
+    this.confirmationService.confirm({
+      header: 'Passwort zurücksetzen',
+      message: 'Möchten Sie das Passwort zurücksetzen?',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        if(this.selectedFirma?.id) {
+        this.adminService.resetFirmaPassword(this.selectedFirma.id).subscribe();
+        }
+      }
+    });
   }
 
 }

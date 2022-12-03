@@ -105,6 +105,11 @@ export class AdminService {
     .pipe(retry(1), catchError(this.handleError));
   }
 
+  resetFirmaPassword(id:string) {
+    return this.http.put(this.BASE_URL + 'firma/' + id , null, this.getHeaders())
+    .pipe(retry(1), catchError(this.handleError));
+  }
+
   reportRunterladen(firma:any) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('token')

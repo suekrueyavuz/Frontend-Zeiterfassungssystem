@@ -2,7 +2,7 @@
 <div class="mitarbeiterCard">
     <div class="card">
         <p-table #dt [columns]="cols" [value]="allMitarbeiter" selectionMode="single" [(selection)]="selectedMitarbeiter" 
-        dataKey="id" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]">
+        (onRowSelect)="scroll()" dataKey="id" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]">
             <ng-template pTemplate="caption">
             <div style="text-align: right">        
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
@@ -27,6 +27,6 @@
     </div>
 </div>
 
-<div class="container" *ngIf="selectedMitarbeiter">
+<div id="changeMitarbeiter" class="container" *ngIf="selectedMitarbeiter">
     <app-change-mitarbeiter [(selectedMitarbeiter)]="selectedMitarbeiter"></app-change-mitarbeiter>
 </div>

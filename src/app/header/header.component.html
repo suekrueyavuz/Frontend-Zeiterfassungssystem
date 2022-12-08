@@ -1,1 +1,7 @@
-<p-menubar [model]="headers" [autoDisplay]="true"></p-menubar>
+<p-menubar [model]="headers">
+    <ng-template pTemplate="start"></ng-template>
+    <ng-template pTemplate="end">
+        <img src="https://os-dfiles.mwscdn.io/logo/de/609000661_logo_20211117125138860.png" alt="Firmenlogo" height="40"
+        class="mr-2" style="margin-right: 1rem;">
+    </ng-template>
+</p-menubar>

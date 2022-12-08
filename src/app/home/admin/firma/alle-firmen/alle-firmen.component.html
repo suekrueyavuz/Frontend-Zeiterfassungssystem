@@ -1,5 +1,7 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 
+<h5 class="title">Alle Firmen</h5>
+<h6 class="title">Drücken Sie auf eine Firma, um Änderungen durchzuführen.</h6>
 <div class="firmaList">
     <div class="card">
         <p-table #dt [columns]="cols" [value]="allFirma" selectionMode="single" [(selection)]="selectedFirma" 

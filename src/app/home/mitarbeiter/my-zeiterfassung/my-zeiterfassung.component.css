@@ -8,3 +8,8 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
+.title {
+    margin-top: 2rem;
+    text-align: center;
+}

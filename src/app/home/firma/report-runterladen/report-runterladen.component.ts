@@ -26,6 +26,7 @@ export class ReportRunterladenComponent implements OnInit {
   reportRunterladen() {
     const zeitraumVon = this.convertDate(this.form.value.zeitraumVon.toLocaleDateString());
     const zeitraumBis = this.convertDate(this.form.value.zeitraumBis.toLocaleDateString());
+    
     this.firmaService.getReportFuerZeitraum(this.me.id, zeitraumVon, zeitraumBis).subscribe((response) => {
       var contentDisposition = response.headers.get('content-disposition');
       var filename = contentDisposition?.split(';')[1].split('filename')[1].split('=')[1].trim();
@@ -39,7 +40,19 @@ export class ReportRunterladenComponent implements OnInit {
   }
 
   convertDate(date:string) {
-    return date.substring(6) + '-' + date.substring(3,5) + '-' + date.substring(0,2);
+    var day:any = +date.split('.')[0];
+    if(day < 10) {
+      day = '0' + day;
+    }
+    var month:any = +date.split('.')[1];
+    if(month < 10) {
+      month = '0' + month;
+    }
+    var year:any = +date.split('.')[2];
+    
+    console.log(year + '-' + month + '-' + day);
+    
+    return year + '-' + month + '-' + day;
   }
 
 }
